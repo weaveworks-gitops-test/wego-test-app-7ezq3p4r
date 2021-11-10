@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-nginx-o8nhvt
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-o8nhvt
+  namespace: my-nginx-o8nhvt
+  labels:
+    name: nginx-o8nhvt
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-o8nhvt
+  template:
+    metadata:
+      namespace: my-nginx-o8nhvt
+      labels:
+        name: nginx-o8nhvt
+    spec:
+      containers:
+      - name: nginx-o8nhvt
+        image: nginx
+        ports:
+        - containerPort: 80
+
